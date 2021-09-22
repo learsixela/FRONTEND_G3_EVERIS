@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo CSS | Clientes</title>
+
+    <!-- estilos css-->
+    <style>
+        /* 3 formas de dar estilo a los elementos */
+        /* por la etiqueta, todos los elemeto se ven afectados */
+        
+        p {
+            color: rgb(53, 80, 200);
+            font-family: verdana;
+            font-size: 20px;
+        }
+        /*Por medio de la clase (.), solo aquellos que tengan esa clase*/
+        
+        .cp2 {
+            color: rgb(53, 200, 85);
+            font-size: 25px;
+        }
+        /*Por medio del id (#), solo el elemento especifico*/
+        
+        #p4 {
+            color: rgb(211, 36, 80);
+            font-size: 30px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <p id="p1">Parrafo 1</p>
+        <p id="p2" class="cp2">Parrafo 2</p>
+        <p id="p3" class="cp2">Parrafo 3</p>
+        <p id="p4" class="cp2">Parrafo 4</p>
+    </div>
+</body>
+
+</html>
