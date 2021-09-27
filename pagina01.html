@@ -12,8 +12,65 @@
 
     <script>
         $(document).ready(function() {
+            var promedio = 0;
+            $('input').val(1);
+            $('input').attr("type", "number");
+            $('input').attr("min", 1);
+            $('input').attr("max", 7);
             //acciones por elemento, clase(.) y id(#) , this (elemento que gatilla la accion)
             //$('#elemento').acciones();
+            $('button').click(function() {
+                console.log("Button boton clickeado " + $(this).text());
+            });
+
+            $('input').blur(function() {
+                console.log("Input cambiado " + $(this).val());
+                let numero = $(this).val();
+                if (isNaN(numero)) {
+                    console.log("Ingrese solo numeros");
+                    alert("Ingrese solo numeros");
+                }
+                //if(numero >=1 && numero <=7){
+                if (numero < 1 || numero > 7) {
+                    console.log("Nota fuera de rango");
+                    //alert("Nota fuera de rango");
+                    $(this).val(1);
+                    $(this).focus();
+                    $(this).select();
+                }
+
+            });
+
+            $('#limpiar').click(function() {
+                console.log("Limpiar boton clickeado " + $(this).text());
+                //console.log($('#l1').text());
+                //obtener el valor del elemento
+                //console.log($('#i1').val());
+
+                //limpia los inputs
+                $('input').val(1);
+                $('#promedio').text("?");
+            });
+
+            $('#calcular').click(function() {
+                let nota1 = parseFloat($('#i1').val());
+                let nota2 = parseFloat($('#i2').val());
+                let nota3 = parseFloat($('#i3').val());
+                let nota4 = parseFloat($('#i4').val());
+                let examen = parseFloat($('#i5').val());
+
+                let suma_notas = nota1 + nota2 + nota3 + nota4;
+                let promedio_notas = (suma_notas / 4);
+                console.log("La suma de las notas es: " + suma_notas + " y el promedio es " + promedio_notas);
+
+                let promedioFinal = (promedio_notas * 0.6) + (examen * 0.4);
+                console.log("El promedio Final es: " + promedioFinal);
+                console.log($('#promedio').text());
+                $('#promedio').text(promedioFinal);
+
+            });
+            //html, append, after, before, attr, hide, click, blur, slide, val, text, addClass
+            //fin document.ready    
         });
     </script>
 </head>
@@ -21,21 +78,22 @@
 <body>
     <div class="container">
         <div>
-            <label for="" class="">Nota 1: </label>
-            <input type="text" class="nota form-control"><br>
+            <label id="l1" for="" class="">Nota 1: </label>
+            <input id="i1" type="number" min="1" max="7" class="nota form-control"><br>
             <label for="" class="">Nota 2: </label>
-            <input type="text" class="nota form-control"><br>
+            <input id="i2" type="text" class="nota form-control"><br>
             <label for="" class="">Nota 3: </label>
-            <input type="text" class="nota form-control"><br>
+            <input id="i3" type="text" class="nota form-control"><br>
             <label for="" class="">Nota 4: </label>
-            <input type="text" class="nota form-control"><br>
+            <input id="i4" type="text" class="nota form-control"><br>
             <label for="" class="">Examen: </label>
-            <input type="text" class="nota form-control">
+            <input id="i5" type="text" class="nota form-control">
             <br>
             <h3>Promedio</h3>
-            <h2>?</h2>
+            <h2 id="promedio">?</h2>
             <br>
-            <input type="button" class="form-control promedio" value="Limpar">
+            <button id="calcular" type="button" class="btn btn-outline-primary">Calcular Promedio</button>
+            <button id="limpiar" type="button" class="btn btn-outline-secondary">Limpiar Campos</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

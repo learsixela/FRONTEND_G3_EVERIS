@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Json ::</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            //$.get(url,function(respuesta){},"json");
+            var url = "https://jsonplaceholder.typicode.com/posts";
+            $.get(url, function(respuesta) {
+                console.log(respuesta);
+                console.log("La respuesta es: " + respuesta);
+                console.log(respuesta[0]);
+                console.log(respuesta[0].body);
+                console.log(respuesta[0].id);
+                console.log(respuesta[0].title);
+                console.log(respuesta[0].userId);
+
+                //modificar el contenido del div principal
+                $('.container').html(""); //limpiar el contenido del div principal
+
+                var html1 = '<div class="card"><div class="card-header">';
+                var html2 = '</div><div class="card-body"><p class="card-text">';
+                var html3 = '</p></div></div><br>';
+
+                for (var i = 0; i < respuesta.length; i++) {
+                    console.log(" body: " + respuesta[i].body);
+                    console.log(" id: " + respuesta[i].id);
+                    console.log(" title: " + respuesta[i].title);
+                    console.log(" user: " + respuesta[i].userId);
+
+                    $('.container').append(html1 + respuesta[i].title + html2 + respuesta[i].body + html3);
+
+                }
+                console.log("***************")
+                for (var blog in respuesta) {
+                    console.log(respuesta[blog]);
+                    console.log(respuesta[blog].body);
+                }
+
+
+
+            }, "json");
+
+
+            //fin document.ready    
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                title
+            </div>
+            <div class="card-body">
+                <p class="card-text">body </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
